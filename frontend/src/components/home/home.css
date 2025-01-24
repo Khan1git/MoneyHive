@@ -1,0 +1,150 @@
+#home{
+    /* margin-left: 2rem; */
+
+    padding: 1.3rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+
+}
+
+h1{
+    color: white;
+}
+.main_container {
+    /* padding: 1rem; */
+    /* margin: 1rem; */
+    width: 98%;
+    min-height: 18vh;
+    /* margin-top: 2rem; */
+    /* border: 1px solid red; */
+}
+
+.card_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted */
+    gap: 1rem;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 13px;
+    justify-content: center;
+    padding: 1rem;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(22, 21, 21);
+}
+
+
+
+/* THE graphs */
+
+.graphs_container{
+    /* margin-top: 1em; */
+    width: 98%;
+    min-height: 24vh ;
+    /* border: 1px solid red; */
+}
+.graphs{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted */
+    gap: 1rem;
+}
+
+.graph {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 20vh;
+    padding: 1rem;
+    color: white;
+    border-radius: 4px;
+    background-color: rgb(22, 21, 21);
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.graph::-webkit-scrollbar{
+    display: none;
+}
+
+.graph  ul li{
+    display: flex;
+    text-align: center;
+}
+.sub-graph  {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    /* align-items: center; */
+    gap: .3rem;
+}
+.sub-graph .loader{
+    gap: .1rem;
+}  
+@media (max-width: 600px) {
+    .sub-graph  {
+       font-size: 15px;
+    }
+}
+@media (max-width: 1010px) {
+    #charts{
+        margin-top: 1em;
+    }
+
+    .main_container{
+        margin-top: 1em;
+    }
+    .graph2{
+       overflow: hidden;
+       overflow-x: scroll;
+       overflow-y: scroll;
+    }
+    
+}
+
+.graph2{
+    /* font-size: small; */
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+    gap: 7rem;
+}
+
+
+.graph2 .sub-graph{
+    display: flex;
+    gap: 1rem;
+}
+
+/* charts section */
+#charts{
+    /* padding: 1rem; */
+    /* border: 1px solid red; */
+}
+
+.charts-box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted */
+    gap: 1rem;
+}
+
+.chart{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    color: white;
+    border-radius: 4px;
+    background-color: rgb(22, 21, 21);
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    /* min-height: 44vh; */
+}
+
+.chart::-webkit-scrollbar{
+    display: none;
+}
