@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, CreditCard, ListOrdered, ReceiptText, ShoppingCart, Users } from 'lucide-react';
+import { LayoutDashboard, CreditCard, ListOrdered, ReceiptText, ShoppingCart, CircleDollarSign } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import './navbar.css'
 const Navbar = () => {
@@ -23,15 +23,11 @@ const Navbar = () => {
               <LayoutDashboard />
               <span className="nav__name">Dashboard</span>
             </NavLink>
-            <NavLink to="/customer-page" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
-              <Users />
-              <span className="nav__name">Customer</span>
+            <NavLink to="/form" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
+            <CircleDollarSign />
+              <span className="nav__name">Form</span>
             </NavLink>
-            <NavLink to="/product-page" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
-              <ShoppingCart />
-              <span className="nav__name">Product</span>
-            </NavLink>
-            <NavLink to="/invoice-order" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
+            <NavLink to="/expense" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
               <ReceiptText />
               <span className="nav__name">Place Order</span>
             </NavLink>
