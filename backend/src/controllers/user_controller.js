@@ -31,7 +31,6 @@ export const user_singup = async (req, res) => {
   }
 };
 
-console.log("THis i s the token", process.env.SECRET_KEY)
 
 export const Login_user = async (req, res) => {
   try {
@@ -61,6 +60,7 @@ export const Login_user = async (req, res) => {
     res.status(200).json({ message: "Login Successfull", token: token });
   } catch (error) {}
 };
+
 
 export const update_user = async (req, res) => {
   try {

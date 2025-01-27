@@ -6,7 +6,8 @@ import route from './routes/user_routes.js'
 import finance_route from './routes/finance_routes.js'
 
 const app = express()
-dotenv.config()
+// dotenv.config()
+dotenv.config({ path: './.env' });
 const PORT = process.env.PORT | 3000
 
 app.use(cors())

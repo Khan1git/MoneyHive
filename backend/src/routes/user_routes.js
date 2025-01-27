@@ -9,7 +9,7 @@ import { authenticateToken } from "../middlewares/authToken.js";
 const route = express.Router();
 
 route.post("/signup", user_singup);
-route.put("/login", authenticateToken, Login_user);
-route.put("/update/:id", update_user);
+route.put("/login", Login_user);
+route.put("/update/:id",authenticateToken, update_user);
 
 export default route;

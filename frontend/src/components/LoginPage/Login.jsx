@@ -27,11 +27,14 @@ export default function LoginPage() {
       if (!response.ok) {
         const data = await response.json();
         setError(data.message)
-        console.log(data)
 
-      } else {
+      } 
+
+        const data = await response.json()
+        localStorage.setItem('token', data.token);
+        console.log(data)
         navigate('/')
-      }
+      
     } catch (error) {
       console.log(error)
     }
