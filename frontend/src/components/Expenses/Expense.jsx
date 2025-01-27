@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./expense.css";
 
 const Expense = () => {
+  const [finances, setFinances] = useState([]);
+  console.log(finances);
+
+  const getAllfinances = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/finance/get-all", {
+        method: "GET",
+      });
+      const data = await res.json();
+      setFinances(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllfinances();
+  }, []);
+
   return (
     <div id="exp_container">
       <div className="head_container">
@@ -22,52 +41,22 @@ const Expense = () => {
             <th>Amount</th>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-           
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-           
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-           
-            <tr>
-              <td>1</td>
-              <td>khan</td>
-              <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam!</td>
-              <td>Pending</td>
-              <td>102</td>
-            </tr>
-           
+            {finances.map((finance, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{finance.Name}</td>
+                <td>{finance.description}</td>
+                <td
+                  style={{
+                    color: finance.status === "paid" ? "green" : "red",
+                  }}
+                >
+                  {finance.status}
+                </td>
+
+                <td>{finance.amount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

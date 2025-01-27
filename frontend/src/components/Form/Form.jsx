@@ -1,91 +1,111 @@
-import React, { useState } from 'react';
-import './form.css';
+import React, { useState } from "react";
+import "./form.css";
+import axios from "axios";
 
-const NewTripForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    type: 'Domestic',
-    purpose: '',
-    flightType: 'One-way',
-    departFrom: '',
-    destination: '',
-    budgetLimit: '',
-    checkIn: '',
-    checkOut: '',
-    hotel: '',
-  });
+const Form = () => {
+  const [Name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [status, setStatus] = useState("");
+  const [type, setType] = useState("");
+  console.log(Name)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = { Name, description, amount, status, type };
+      const response = await fetch(
+        "http://localhost:3000/api/finance/add",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (!response.ok) {
+        const errorMessage = await response.text(); // Get error message from response
+        throw new Error(`Error ${response.status}: ${errorMessage}`);
+      }
+
+      const data = await response.json()
+      alert("Form Submitted: ", data);
+      setAmount("");
+      setName("");
+      setDescription("");
+      setStatus("");
+      setType("");
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="form-container">
-      {/* <h2>New Trip</h2> */}
-      <form>
-
+      <form onSubmit={handleSubmit}>
         <div className="itinerary-section">
           <h3>Add Data</h3>
 
-          <label>Depart from*</label>
+          <div className="sub_inputs">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={Name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            <label htmlFor="description">Description</label>
+            <input
+              id="description"
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <label htmlFor="amount">Amount</label>
           <input
+            id="amount"
             type="text"
-            name="departFrom"
-            value={formData.departFrom}
-            onChange={handleChange}
+            name="amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           />
 
-          <label>Destination*</label>
-          <input
-            type="text"
-            name="destination"
-            value={formData.destination}
-            onChange={handleChange}
-          />
+          <label htmlFor="status">Status</label>
+          <select
+            id="status"
+            name="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="">Select Status</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+            <option value="unpaid">UnPaid</option>
+          </select>
 
-          <label>Budget limit*</label>
-          <input
-            type="text"
-            name="budgetLimit"
-            value={formData.budgetLimit}
-            onChange={handleChange}
-          />
-
-          <h3>Accommodation</h3>
-
-          <label>Check-in*</label>
-          <input
-            type="date"
-            name="checkIn"
-            value={formData.checkIn}
-            onChange={handleChange}
-          />
-
-          <label>Check-out*</label>
-          <input
-            type="date"
-            name="checkOut"
-            value={formData.checkOut}
-            onChange={handleChange}
-          />
-
-          <label>Hotel*</label>
-          <input
-            type="text"
-            name="hotel"
-            value={formData.hotel}
-            onChange={handleChange}
-          />
+          <label htmlFor="type">Type</label>
+          <select
+            id="type"
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          >
+            <option value="">Select Type</option>
+            <option value="loan-taken">Loan Taken</option>
+            <option value="loan-given">Loan Given</option>
+            <option value="repayment">Repayment</option>
+            <option value="receivable">Receivable</option>
+            <option value="payment">Payment</option>
+          </select>
         </div>
 
         <div className="form-actions">
-          <button type="button" className="save-draft-btn">
-            Save draft
-          </button>
           <button type="submit" className="save-btn">
             Save
           </button>
@@ -95,4 +115,4 @@ const NewTripForm = () => {
   );
 };
 
-export default NewTripForm;
+export default Form;

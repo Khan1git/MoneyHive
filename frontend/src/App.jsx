@@ -10,6 +10,8 @@ import {
   Link
 } from "react-router-dom";
 import Expense from "./components/Expenses/Expense";
+import LoginPage from "./components/LoginPage/Login";
+import SignupPage from "./components/SignupPage/Signup";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/form" element={<Form/>} />
         <Route path="/expense" element={<Expense/>} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<SignupPage/>} />
       </Routes>
     </Router>
   );

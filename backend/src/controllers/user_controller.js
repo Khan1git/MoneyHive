@@ -31,6 +31,8 @@ export const user_singup = async (req, res) => {
   }
 };
 
+console.log("THis i s the token", process.env.SECRET_KEY)
+
 export const Login_user = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -51,11 +53,10 @@ export const Login_user = async (req, res) => {
         id: isUserPresent._id,
         email: isUserPresent.email,
       },
-      '04cb41ccde31f1c80dc81a6b4440d245116e489b50d416512460fdab32abe405',
-      {
-        expiresIn: "1D",
-      }
+      process.env.SECRET_KEY,
+      { expiresIn: "1D" }
     );
+    // console.log("this is the token",token)
 
     res.status(200).json({ message: "Login Successfull", token: token });
   } catch (error) {}

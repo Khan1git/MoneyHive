@@ -31,14 +31,6 @@ const Navbar = () => {
               <ReceiptText />
               <span className="nav__name">Place Order</span>
             </NavLink>
-            <NavLink to="/invoices" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
-              <ListOrdered />
-              <span className="nav__name">Invoices</span>
-            </NavLink>
-            <NavLink to="/payment" className={({ isActive }) => (isActive ? 'nav__link active' : 'nav__link')}>
-              <CreditCard />
-              <span className="nav__name">Payment</span>
-            </NavLink>
           </div>
         </div>
       </nav>

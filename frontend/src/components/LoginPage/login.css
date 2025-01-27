@@ -1,0 +1,132 @@
+/* login.css */
+
+/* Make the container take the full viewport height and avoid horizontal overflow */
+
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-color: black;
+    padding: 10px; /* Added padding for mobile responsiveness */
+    box-sizing: border-box; /* Ensure padding doesn't affect layout */
+  }
+  
+  .login-card {
+    /* background-color: white; */
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  
+  /* Style for card header */
+  .login-card-header {
+    text-align: center;
+  }
+  
+  .login-card-header h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for card content */
+  .login-card-content {
+    margin-top: 20px;
+  }
+  
+  /* Styling input group */
+  .login-input-group {
+    margin-bottom: 15px;
+  }
+  
+  .login-input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Styling for input and select fields */
+  .login-input-group input,
+  .login-input-group select {
+    width: 100%;  /* Ensure inputs take full width of their parent */
+    padding: 10px;
+    border: 1px solid grey;
+    outline: none;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Make sure padding doesn't affect width */
+  }
+  
+  /* Styling for submit button */
+  .login-button {
+    width: 100%;  /* Ensure button takes full width of its parent */
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+  
+  /* Button hover effect */
+  .login-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid grey;
+  }
+  
+  /* Footer */
+  .login-card-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 600px) {
+    /* Stack elements vertically on smaller screens */
+    .login-container {
+      padding: 20px;
+    }
+  
+    .login-card {
+      padding: 15px;
+    }
+  
+    .login-input-group input,
+    .login-input-group select {
+      width: 100%;  /* Ensure inputs take full width on small screens */
+    }
+  
+    .login-button {
+      padding: 12px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    /* Further adjust for very small screens */
+    .login-card {
+      padding: 10px;
+    }
+  
+    .login-input-group input,
+    .login-input-group select {
+      font-size: 14px;
+    }
+  
+    .login-button {
+      padding: 15px;
+      font-size: 16px;
+    }
+  }
+  
